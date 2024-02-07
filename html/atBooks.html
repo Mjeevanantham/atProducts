@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtBooks</title>
+    <link rel="stylesheet" href="../css/atbooks.css">
+</head>
+
+<body>
+    <nav>
+        <img src="../img/atbooks_logo.jpeg" class="atBooksLogo" alt="atBooksLogo">
+        <h1>atBooks</h1>
+        <button type="button" onclick="history.back()">BACK</button>
+    </nav>
+    <div id="container">
+        <div id="moduleContainer">
+            <div id="moduleImg1">
+                <a onclick="moduleDeatils('2')"> <img src="../img/salesorder.png" id="Moduleimage"> </a>
+            </div>
+            <div class="moduleDropdownContainer">
+                <div id="modulelist1" >
+                    <button onclick="moduleDeatils('2')">Sales Invoice</button> 
+                </div>
+            </div>
+        </div>
+        <div id="moduleContainer2">
+            <div id="moduleImg2">
+                <a onclick="moduleDeatils('1')"> <img src="../img/salesinvoice.png" id="Moduleimage"> </a>
+            </div>
+            <div class="moduleDropdownContainer">
+                <div name="modulelist2" id="modulelist2" alt="2nd module">
+                    <button onclick="moduleDeatils('1')">Sales Order</button> 
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+    <script src="../js/module.js"></script>
+
+</body>
+
+</html>

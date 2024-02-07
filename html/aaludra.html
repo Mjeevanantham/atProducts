@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaludra</title>
+    <link rel="stylesheet" href="../css/aaludra.css">
+</head>
+
+<body>
+    <nav>
+        <img src="../img/ATS-dark-logo.png" class="atBooksLogo" alt="atBooksLogo">
+        <h1>AALUDRA</h1>
+        <button type="button" onclick="history.back()">BACK</button>
+    </nav>
+    <div id="container">
+        <div id="moduleContainer">
+            <div id="moduleImg1">
+                <a onclick="moduleDeatils('atBooks')"> <img src="../img/atbooks.png" id="Moduleimage"> </a>
+            </div>
+            <div class="moduleDropdownContainer">
+                <div id="modulelist1" >
+                    <button class="products" onclick="moduleDeatils('atBooks')">atBooks</button> 
+                </div>
+            </div>
+        </div>
+        <div id="moduleContainer2">
+            <div id="moduleImg2">
+                <a onclick="moduleDeatils('atPayments')"> <img src="../img/atpayments.png" id="Moduleimage"> </a>
+            </div>
+            <div class="moduleDropdownContainer">
+                <div name="modulelist2" id="modulelist2" alt="2nd module">
+                    <button onclick="moduleDeatils('atPayments')">atPayments</button> 
+                </div>
+            </div>
+        </div>
+    </div>    
+
+
+    <script src="../js/module.js"></script>
+
+</body>
+
+</html>

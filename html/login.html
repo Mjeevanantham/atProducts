@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atProducts - Login</title>
+    <link rel="stylesheet" href="../css/Login.css">
+</head>
+
+<body>
+    <div id="Container">
+        <label id="logintxt">Login</label><br>
+        <input type="text" id="email" placeholder="Email" />
+        <input type="password" id="password" placeholder="Password" />
+        <input type="submit" id="login" name="login" value="Login" />
+        <div class="registerpageContainer">
+            <a href="../html/register.html" id="RegisterPage">Don't have an account?</a>
+            <a href="../html/register.html" id="RegisterPage1">Register</a>
+        </div>
+    </div>
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getDatabase, update, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyAnwYdecta7lzGcBetkiU6IrRY6e7w6zMY",
+        authDomain: "atproducts-aaludra.firebaseapp.com",
+        databaseURL: "https://atproducts-aaludra-default-rtdb.firebaseio.com",
+        projectId: "atproducts-aaludra",
+        storageBucket: "atproducts-aaludra.appspot.com",
+        messagingSenderId: "114196110460",
+        appId: "1:114196110460:web:71f197bd037e87cebbfdf9",
+        measurementId: "G-K57CH8NT44"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+    login.addEventListener('click', (e) => {
+
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+
+
+                const user = userCredential.user;
+                const dt = new Date();
+                update(ref(database, 'users/' + user.uid), {
+                    last_login: dt
+
+                })
+                // alert("successfully logged In!!");
+                localStorage.setItem('login', true);
+                window.location.href="../index.html";
+
+
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+
+                alert(errorMessage);
+
+            });
+    })
+
+    // const user = auth.currentUser;
+
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //         // User is signed in, see docs for a list of available properties
+    //         // https://firebase.google.com/docs/reference/js/auth.user
+    //         const uid = user.uid;
+    //         localStorage.setItem('login', true);
+    //         window.location.href="index.html";
+    //         // ...
+    //     } else {
+    //         localStorage.setItem('login', false);
+
+    //         // User is signed out
+    //         // ...
+    //     }
+    // });
+
+</script>
+
+</html>

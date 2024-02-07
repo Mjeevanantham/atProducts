@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart View</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Add your custom styles here */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    #cart-container {
+      max-width: 100%;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-item {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .product-img {
+      max-width: 300px;
+      margin-right: 20px;
+    }
+
+    .productwords {
+      flex-grow: 1;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .product-category {
+      font-size: 1rem;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .product-description {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      color: #777;
+    }
+
+    .product-price-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-container {
+      text-align: right;
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    #checkout-btn {
+      display: block;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cart-container"></div>
+  <button id="checkout-btn" onclick="checkout()">Checkout</button>
+
+  <script>
+    // Retrieve products from local storage
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Get the container where you want to display the products
+    const cartContainer = document.getElementById('cart-container');
+
+    // Display each product in the cart
+    cartItems.forEach(product => {
+      cartContainer.innerHTML += `
+        <div class="cart-item">
+          <img src="${product.images[0]}" class="product-img" alt="image varala..">
+          <div class="productwords">
+            <h2 class="product-title">${product.title}</h2>
+            <h4 class="product-category">${product.category}</h4>
+            <p class="product-description">${product.description}</p>
+            <div class="product-price-container">
+              <div class="price-container">
+                <h3 class="product-price"> ₹ ${(product.price * 64).toFixed()}</h3>
+                <h6 class="product-price"> ₹ ${(((product.price) + 50) * 64).toFixed(2)}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    function checkout() {
+      alert("Your order is placed!");
+      localStorage.removeItem('cart');
+      cartContainer.innerHTML = '';
+      window.location.href = '../index.html'; 
+    }
+  </script>
+</body>
+
+</html>
