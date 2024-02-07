@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>atProduct - ecommerce</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="https://img.icons8.com/3d-fluency/94/shopping-cart-loaded.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+
+  <style>
+    /* #loading_indicator 
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      border: 10px solid grey;
+      border-radius: 50%;
+      border-top: 10px solid blue;
+      width: 100px;
+      height: 100px;
+      animation: spinIndicator 1s linear infinite;
+    }
+
+    @keyframes spinIndicator {
+      100% {
+        transform: rotate(360deg);
+      }
+    } */
+
+    /* HTML: <div class="loader"></div> */
+    .loader {
+      --s: 25px;
+      --g: 5px;
+
+      width: calc(3*(1.353*var(--s) + var(--g)));
+      display: grid;
+      justify-items: end;
+      aspect-ratio: 3;
+      overflow: hidden;
+      --_m: linear-gradient(90deg, #0000, #000 15px calc(100% - 15px), #0000);
+      -webkit-mask: var(--_m);
+      mask: var(--_m);
+      visibility: visible;
+    }
+
+    .loader:before {
+      content: "";
+      visibility: visible;
+      width: 200%;
+      background:
+        linear-gradient(90deg, #ff1818 50%, #0000 0),
+        conic-gradient(from -90deg at var(--s) calc(0.353*var(--s)),
+          #fff 135deg, #666 0 270deg, #aaa 0);
+      background-blend-mode: multiply;
+      --_m:
+        linear-gradient(to bottom right,
+          #0000 calc(0.25*var(--s)), #000 0 calc(100% - calc(0.25*var(--s)) - 1.414*var(--g)), #0000 0),
+        conic-gradient(from -90deg at right var(--g) bottom var(--g), #000 90deg, #0000 0);
+      -webkit-mask: var(--_m);
+      mask: var(--_m);
+      background-size: calc(100%/3) 100%, calc(100%/6) 100%;
+      -webkit-mask-size: calc(100%/6) 100%;
+      mask-size: calc(100%/6) 100%;
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+      animation: l10 1s infinite linear;
+    }
+
+    @keyframes l10 {
+      to {
+        transform: translate(calc(100%/3))
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="loader"></div>
+  <!-- <div id="loading_indicator"> </div> -->
+
+
+
+  <!-- =============  Navbar ================== -->
+
+  <nav class="navigation-bar is-visible" data-nav-status="toggle">
+    <div class="container">
+      <img class="logo" src="img/ATS-dark-logo.png">
+      <!-- <div class="nav-search">
+        <div class="search">
+          <input type="text" id="search" placeholder="search" />
+          <div class="symbol">
+            <svg class="cloud">
+              <use xlink:href="#cloud" />
+            </svg>
+            <svg class="lens">
+              <use xlink:href="#lens" />
+            </svg>
+          </div>
+        </div> -->
+      <!-- 
+        <div class="moduleDropdownContainer">
+          <select name="modulelist1" id="modulelist1" alt="1st module" onchange="navigateToModule(this.value)">
+              <option value="" selected disabled>AALUDRA</option>
+              <option value="atbooks.html">atBooks</option>
+              <option value="atpayments.html">atPayments</option>
+          </select>
+      </div> -->
+
+      <div class="left-nav">
+        <img id="myaccount" src="img/account.png" alt="account">
+        <input type="submit" id="logout" name="logout" value="Log Out" />
+        <input type="submit" id="login" name="login" value="Log In" />
+        <img id="cartimg" src="img/cart.png" alt="cart">
+      </div>
+      <!-- <button id="cart" class="btn" type="button">
+        </button> -->
+    </div>
+  </nav>
+
+
+
+
+  <!-- ==============   slider  ===============  -->
+
+  <div id="headContainer">
+    <h5 style="text-align: center; width: 100%; padding: 10px;">Featured Products</h5>
+
+    <!-- <div id="containerSlider" >
+      <div id="slidingImage"> <img src="img1.png" alt="image1" draggable="false"> </div>
+      <div id="slidingImage" onclick="window.location.href='aaludra.html'" draggable="false"> <img src="img5.png" alt="image5"> </div>
+      <div id="slidingImage"> <img src="img2.png" alt="image2" draggable="false"> </div>
+      <div id="slidingImage" onclick="window.location.href='aaludra.html'" draggable="false"> <img src="img5.png" alt="image5"> </div>
+      <div id="slidingImage"> <img src="img4.png" alt="image4" draggable="false"> </div>
+    </div> -->
+    <div class="slideshow-container">
+
+      <div class="mySlides fade">
+        <a href="html/aaludra.html">
+          <img src="img/ATS-poster.png" style="width:100%;border-radius: 25px;" alt="Click to navigate">
+        </a>
+      </div>
+
+      <div class="mySlides fade">
+        <a href="html/atBooks.html">
+          <img src="img/poster2.png" style="width:100%;border-radius: 25px;" alt="Click to navigate">
+        </a>
+      </div>
+
+      <div class="mySlides fade">
+        <a href="html/atPayments.html">
+          <img src="img/poster3.png" style="width:100%;border-radius: 25px;" alt="Click to navigate">
+        </a>
+      </div>
+      <div class="mySlides fade">
+        <a href="html/atPayments.html">
+          <img src="img/poster4.png" style="width:100%;border-radius: 25px;" alt="Click to navigate">
+        </a>
+      </div>
+      <div class="mySlides fade">
+        <a href="html/atPayments.html">
+          <img src="img/poster5.png" style="width:100%;border-radius: 25px;" alt="Click to navigate">
+        </a>
+      </div>
+      <div class="mySlides fade">
+        <a href="html/atPayments.html">
+          <img src="img/poster6.png" style="width:100%;border-radius: 25px;" alt="Click to navigate">
+        </a>
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+
+    </div>
+    <br>
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+  </div>
+
+  <!-- ==============   contents  ===============  -->
+
+
+  <div id="contentbody">
+    <h5 style="text-align: center; width: 100%; ">Other Products</h5>
+    <marquee dir="ltr" direction="right">🎉 Enjoy 10% off on your favorite items! Use code 'FUNFRIDAY' at checkout.
+      Happy
+      shopping! 🛒</marquee>
+
+    <div id="products">
+      <div id="product" class="product-item">
+        <div class="container1">
+          <img loading="lazy" src="img/atbooks.png" class="product-img" alt="atbooksProducts">
+          <img src="img/ATS-dark-logo.png" class="product-img1" alt="image varala..">
+        </div>
+        <div class="container2">
+          <h2 class="product-title">atBooks</h2>
+          <div class="price-container">
+            <h3 class="product-price">Rs.7999</h3>
+            <h6 class="product-price">Rs.9999</h6>
+          </div>
+        </div>
+        <div class="container3">
+          <p class="product-description">With atBooks, we help you develop highly secured custom software specifically
+            designed to serve and solve your MSME...</p>
+        </div>
+        <div class="container4">
+          <div class="ratingstar">
+            <p>⭐ 4.5</p>
+          </div>
+          <div class="reviews">
+            <p>500+ reviews</p>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+  <!-- ==============   Image Slide by using Slick  ===============  -->
+
+
+
+
+
+
+  <!-- Footer -->
+  <!-- Site footer -->
+  <div id="footer">
+    <div class="left-section">
+      <ul>
+        <li><a href="html/login.html">Login</a> </li>
+        <li><a href="html/register.html">Register</a></li>
+        <li><a href="html/cart.html">Shopping cart</a></li>
+        <li><a href="#headContainer">Featured products</a></li>
+      </ul>
+    </div>
+
+    <div class="right-section">
+      <h5> Mail us at: sample@gmail.com<br />
+        Registered address: 48, Devkaran Mansion, Vithaldas Rd, Lohar Chawl</h5>
+    </div>
+
+  </div>
+  <div class="last-session">
+    <img src="img/ATS-dark-logo.png" class="companylogo" alt="logo">
+  </div>
+
+
+  <marquee class="marquee" direction="left"><img loading="lazy" class="imgmarquee" src="img/panda-rolling.gif" alt="">
+  </marquee>
+
+
+  <!-- Include jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="script.js"></script>
+
+
+
+  <!-- Scripts -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+</body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+  import { getDatabase, update, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAnwYdecta7lzGcBetkiU6IrRY6e7w6zMY",
+    authDomain: "atproducts-aaludra.firebaseapp.com",
+    databaseURL: "https://atproducts-aaludra-default-rtdb.firebaseio.com",
+    projectId: "atproducts-aaludra",
+    storageBucket: "atproducts-aaludra.appspot.com",
+    messagingSenderId: "114196110460",
+    appId: "1:114196110460:web:71f197bd037e87cebbfdf9",
+    measurementId: "G-K57CH8NT44"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const database = getDatabase(app);
+  const auth = getAuth();
+
+  logout.addEventListener('click', (e) => {
+    const response = confirm("Are you sure you want to Sign Out?");
+    if (response) {
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        // confirm("User Logged Out..!");
+        window.location.href = "html/login.html";
+        localStorage.setItem('login', false);
+        localStorage.setItem('firebase:previous_websocket_failure', false);
+
+      }).catch((error) => {
+        // An error happened.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(errorMessage);
+      });
+    }
+
+  })
+
+</script>
+<script>
+  document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+      document.querySelector('.loader').style.visibility = "visible";
+      document.querySelector("body").style.filter = "blur(5px)";
+    } else {
+      setTimeout(() => {
+        document.querySelector('.loader').style.display = "none";
+        document.querySelector("body").style.filter = "none";
+      }, 1500)
+    }
+  };
+</script>
+
+</html>
