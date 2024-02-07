@@ -1,0 +1,101 @@
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(5,146,239);
+    background: linear-gradient(51deg, rgba(5,146,239,1) 0%, rgba(27,210,254,1) 100%);
+}
+
+nav {
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    padding-left: 30px;
+    padding-right: 30px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:2px dashed #000000;
+}
+
+h1{
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.atPaymentsLogo {
+    max-width: 50px;
+    height: auto;
+    border-radius: 15px;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    color: white;
+    background-color: #000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#container {
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    background: rgb(5,146,239);
+    background: linear-gradient(51deg, rgba(5,146,239,1) 0%, rgba(27,210,254,1) 100%);}
+
+#moduleContainer,
+#moduleContainer2 {
+    text-align: center;
+}
+
+#Moduleimage {
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 10px;
+    border: 0.2px solid rgb(9, 230, 112);
+    border-radius: 15px;
+    margin-top: 100px;
+    position: relative;
+}
+
+#Moduleimage:hover {
+    filter: blur(0px);
+}
+
+#Moduleimage::after {
+    content: 'Your Text Here';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(249, 8, 8);
+    font-size: 16px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    filter: blur(1px);
+}
+
+#Moduleimage:hover{
+    transform: scale(1.05);
+}
+
+.moduleDropdownContainer select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.moduleDropdownContainer select:hover {
+    border-color: #888;
+}
+
+.moduleDropdownContainer select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
