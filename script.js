@@ -311,7 +311,7 @@ function submit(e) {
     console.log("User is logged in");
     accountImg.style.display = "flex";
     loginbtn.style.display = "none";
-    accountImg.addEventListener("click", () => {
+    accountImg.addEventListener("mouseover", () => {
       logoutbtn.style.display = "flex";
     });
   } else {
