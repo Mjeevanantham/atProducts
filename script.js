@@ -311,8 +311,15 @@ function submit(e) {
     console.log("User is logged in");
     accountImg.style.display = "flex";
     loginbtn.style.display = "none";
-    accountImg.addEventListener("click", () => {
+    let logoutTimeout;
+    accountImg.addEventListener("mouseover", () => {
+      clearTimeout(logoutTimeout);
       logoutbtn.style.display = "flex";
+    });
+    accountImg.addEventListener("mouseout", () => {
+      logoutTimeout = setTimeout(() => {
+        logoutbtn.style.display = "none";
+      }, 2000);
     });
   } else {
     console.log("User is not logged in");
