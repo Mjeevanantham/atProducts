@@ -2,100 +2,100 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>atProducts - SignUp</title>
-    <link rel="stylesheet" href="../css/register.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>atProducts - SignUp</title>
+  <link rel="stylesheet" href="../css/register.css">
 </head>
 
 <body>
-    <div id="Container"><br>
-        <label id="register">Register</label><br><br>
-        <input type="text" id="username" placeholder="User name" /><br>
-        <input type="email" id="email" placeholder="Email" /><br>
-        <input type="password" id="password" placeholder="Password" /><br><br><br>
-        <input type="submit" id="signUp" value="Sign up" /><br>
-        <div class="registerpage">
-            <br>
-            <hr><a href="../html/login.html" id="reg">Already have an account?</a>
-        </div>
+  <div id="Container"><br>
+    <label id="register">Register</label><br><br>
+    <input type="text" id="username" placeholder="User name" /><br>
+    <input type="email" id="email" placeholder="Email" /><br>
+    <input type="password" id="password" placeholder="Password" /><br><br>
+    <input type="submit" id="signUp" value="Sign up" /><br>
+    <div class="registerpage">
+      <br>
+      <hr><a href="../html/login.html" id="reg">Already have an account?</a>
     </div>
+  </div>
 </body>
 <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+  import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-        apiKey: "AIzaSyAnwYdecta7lzGcBetkiU6IrRY6e7w6zMY",
-        authDomain: "atproducts-aaludra.firebaseapp.com",
-        databaseURL: "https://atproducts-aaludra-default-rtdb.firebaseio.com",
-        projectId: "atproducts-aaludra",
-        storageBucket: "atproducts-aaludra.appspot.com",
-        messagingSenderId: "114196110460",
-        appId: "1:114196110460:web:71f197bd037e87cebbfdf9",
-        measurementId: "G-K57CH8NT44"
-    };
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAnwYdecta7lzGcBetkiU6IrRY6e7w6zMY",
+    authDomain: "atproducts-aaludra.firebaseapp.com",
+    databaseURL: "https://atproducts-aaludra-default-rtdb.firebaseio.com",
+    projectId: "atproducts-aaludra",
+    storageBucket: "atproducts-aaludra.appspot.com",
+    messagingSenderId: "114196110460",
+    appId: "1:114196110460:web:71f197bd037e87cebbfdf9",
+    measurementId: "G-K57CH8NT44"
+  };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const database = getDatabase(app);
-    const auth = getAuth();
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const database = getDatabase(app);
+  const auth = getAuth();
 
-    signUp.addEventListener('click', (e) => {
+  signUp.addEventListener('click', (e) => {
 
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-        var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var username = document.getElementById('username').value;
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed up 
-                const user = userCredential.user;
-                set(ref(database, 'users/' + user.uid), {
-                    username: username,
-                    email: email
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        set(ref(database, 'users/' + user.uid), {
+          username: username,
+          email: email
 
-                })
-                // alert('User Created!!');
-                localStorage.setItem('login', false);
-                localStorage.setItem('firebase:previous_websocket_failure', false);
-                window.location.href = "login.html";
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
+        })
+        // alert('User Created!!');
+        localStorage.setItem('login', false);
+        localStorage.setItem('firebase:previous_websocket_failure', false);
+        window.location.href = "login.html";
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
 
-                alert(errorMessage);
-            });
-    })
+        alert(errorMessage);
+      });
+  })
 
 
-    // const user = auth.currentUser;
+  // const user = auth.currentUser;
 
-    // onAuthStateChanged(auth, (user) => {
-    //     if (user) {
-    //         // User is signed in, see docs for a list of available properties
-    //         // https://firebase.google.com/docs/reference/js/auth.user
-    //         const uid = user.uid;
-    //         window.location.href="login.html";
-    //         // ...
-    //     } else {
-    //         localStorage.setItem('login', false);
+  // onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //         // User is signed in, see docs for a list of available properties
+  //         // https://firebase.google.com/docs/reference/js/auth.user
+  //         const uid = user.uid;
+  //         window.location.href="login.html";
+  //         // ...
+  //     } else {
+  //         localStorage.setItem('login', false);
 
-    //         // User is signed out
-    //         // ...
-    //     }
-    // });
+  //         // User is signed out
+  //         // ...
+  //     }
+  // });
 
 
 </script>

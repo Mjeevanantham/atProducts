@@ -1,0 +1,53 @@
+// let previousScroll = 0;
+
+// const hideNav = () => {
+//   const navElement = document.querySelector("[data-nav-status='toggle']");
+//   navElement.classList.remove("is-visible");
+//   navElement.classList.add("is-hidden");
+// };
+
+// const showNav = () => {
+//   const navElement = document.querySelector("[data-nav-status='toggle']");
+//   navElement.classList.remove("is-hidden");
+//   navElement.classList.add("is-visible");
+// };
+
+// window.addEventListener("scroll", function () {
+//   const currentScroll = window.scrollY;
+
+//   if (
+//     currentScroll > 0 &&
+//     currentScroll < document.body.scrollHeight - window.innerHeight
+//   ) {
+//     if (currentScroll > previousScroll) {
+//       setTimeout(hideNav, 300);
+//     } else {
+//       setTimeout(showNav, 300);
+//     }
+
+//     previousScroll = currentScroll;
+//   }
+// });
+
+//================================SideShow==========================
+
+// const containerSlider = document.getElementById("containerSlider");
+// const slides = containerSlider.children;
+// let currentIndex = 0;
+
+// function showSlide(index) {
+//   for (let i = 0; i < slides.length; i++) {
+//     slides[i].style.display = "none";
+//   }
+
+//   slides[index].style.display = "block";
+// }
+
+// function nextSlide() {
+//   currentIndex = (currentIndex + 1) % slides.length;
+//   showSlide(currentIndex);
+// }
+
+// showSlide(currentIndex);
+
+// setInterval(nextSlide, 4000);

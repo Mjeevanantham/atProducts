@@ -48,37 +48,47 @@
     const database = getDatabase(app);
     const auth = getAuth();
 
-    login.addEventListener('click', (e) => {
+    login.addEventListener('click', async (e) => {
+        e.preventDefault(); // Prevent default form submission
 
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
+        try {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
 
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            const auth = getAuth();
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-
-                const user = userCredential.user;
-                const dt = new Date();
-                update(ref(database, 'users/' + user.uid), {
-                    last_login: dt
-
-                })
-                // alert("successfully logged In!!");
-                localStorage.setItem('login', true);
-                window.location.href="../index.html";
-
-
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-
-                alert(errorMessage);
-
+            const user = userCredential.user;
+            const dt = new Date();
+            update(ref(database, 'users/' + user.uid), {
+                last_login: dt.toString() // Convert date to string before updating
             });
-    })
+
+            // Set user login state in local storage
+            localStorage.setItem('login', true);
+
+            // Set a cookie for the login state (session cookie)
+            setCookie("login", "true", 1); // Expires at the end of the session
+            alert("stored");
+
+            // Redirect user to the index page after successful login
+            window.location.href = "../index.html";
+        } catch (error) {
+            // Handle errors
+            alert(error.message);
+        }
+    });
+
+    // Function to set a cookie
+    function setCookie(cookieName, cookieValue, daysToExpire) {
+        var d = new Date();
+        d.setTime(d.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+        alert("stored");
+
+    }
+
 
     // const user = auth.currentUser;
 

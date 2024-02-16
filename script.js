@@ -1,56 +1,8 @@
-// let previousScroll = 0;
-
-// const hideNav = () => {
-//   const navElement = document.querySelector("[data-nav-status='toggle']");
-//   navElement.classList.remove("is-visible");
-//   navElement.classList.add("is-hidden");
-// };
-
-// const showNav = () => {
-//   const navElement = document.querySelector("[data-nav-status='toggle']");
-//   navElement.classList.remove("is-hidden");
-//   navElement.classList.add("is-visible");
-// };
-
-// window.addEventListener("scroll", function () {
-//   const currentScroll = window.scrollY;
-
-//   if (
-//     currentScroll > 0 &&
-//     currentScroll < document.body.scrollHeight - window.innerHeight
-//   ) {
-//     if (currentScroll > previousScroll) {
-//       setTimeout(hideNav, 300);
-//     } else {
-//       setTimeout(showNav, 300);
-//     }
-
-//     previousScroll = currentScroll;
-//   }
-// });
-
-//================================SideShow==========================
-
-// const containerSlider = document.getElementById("containerSlider");
-// const slides = containerSlider.children;
-// let currentIndex = 0;
-
-// function showSlide(index) {
-//   for (let i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-
-//   slides[index].style.display = "block";
-// }
-
-// function nextSlide() {
-//   currentIndex = (currentIndex + 1) % slides.length;
-//   showSlide(currentIndex);
-// }
-
-// showSlide(currentIndex);
-
-// setInterval(nextSlide, 4000);
+let products = document.querySelector("#products");
+let originalProducts = [];
+const logoutbtn = document.getElementById("logout");
+const loginbtn = document.getElementById("login");
+const accountImg = document.getElementById("myaccount");
 
 document.onreadystatechange = function () {
   const loader = document.querySelector(".loader");
@@ -149,10 +101,6 @@ function addNewProduct() {
 }
 
 // Call the function to add the new product
-addNewProduct();
-
-let products = document.querySelector("#products");
-let originalProducts = [];
 
 async function fetchProducts(url) {
   try {
@@ -212,52 +160,6 @@ async function fetchProducts(url) {
   }
 }
 
-function addToCart(productId) {
-  // Get the product details based on the productId
-  const selectedProduct = originalProducts.find(
-    (product) => product.id === productId
-  );
-
-  // Check if the product is found
-  if (selectedProduct) {
-    // Add the product details to the local storage
-    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    cartItems.push(selectedProduct);
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-
-    // Log the product ID (optional)
-    console.log("Product added to cart:", productId);
-  } else {
-    console.error("Product not found.");
-  }
-}
-
-// Example usage
-// fetchProducts('http://localhost:8080/allProducts');
-
-//dummy API for products
-fetchProducts("https://dummyjson.com/products");
-
-// function handleProductClick(event) {
-//   const addToCartButton = document.querySelector('.add-to-cart');
-
-//   addToCartButton.addEventListener('click', () => {
-//     console.log('sjcbh');
-
-//     // Rest of your code
-//     event.preventDefault();
-//     const productId = addToCartButton.dataset.productid;
-
-//     if (productId) {
-//       window.location.href = `productdetails.html?id=${productId}`;
-//     } else {
-//       console.error('Product ID not found.');
-//     }
-//   });
-// }
-
-// script.js
-
 let icon = {
   success: '<span class="material-symbols-outlined"></span>',
 };
@@ -272,10 +174,10 @@ const showToast = (
   let box = document.createElement("div");
   box.classList.add("toast", `toast-${toastType}`);
   box.innerHTML = ` <div class="toast-content-wrapper"> 
-					<div class="toast-icon"> 
-					${icon[toastType]} 
-					</div> 
-					<div class="toast-message">${message}</div> 
+      <div class="toast-icon"> 
+      ${icon[toastType]} 
+      </div> 
+      <div class="toast-message">${message}</div> 
 					<div class="toast-progress"></div> 
 					</div>`;
   duration = duration || 5000;
@@ -291,17 +193,9 @@ const showToast = (
   document.body.appendChild(box);
 };
 
-const logoutbtn = document.getElementById("logout");
-const loginbtn = document.getElementById("login");
-const accountImg = document.getElementById("myaccount");
-
 loginbtn.addEventListener("click", (e) => {
   window.location.href = "./html/login.html";
 });
-
-function submit(e) {
-  showToast("Added to cart", "success", 5000);
-}
 
 (function checklog() {
   const loginStatus = localStorage.getItem("login");
@@ -342,3 +236,16 @@ function productDetails(productId) {
   // Redirect to the new page in the same window
   window.location.href = newPageUrl;
 }
+
+let docTitle = document.title;
+window.addEventListener("blur", () => {
+  document.title = "Come Back☺️";
+});
+window.addEventListener("focus", () => {
+  document.title = "atProducts";
+});
+
+//-------------------------------->>>>>>>CallBacks
+
+fetchProducts("https://dummyjson.com/products");
+addNewProduct();

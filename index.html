@@ -316,6 +316,7 @@
         window.location.href = "html/login.html";
         localStorage.setItem('login', false);
         localStorage.setItem('firebase:previous_websocket_failure', false);
+        setCookie("login","false",0)
 
       }).catch((error) => {
         // An error happened.
@@ -324,6 +325,12 @@
 
         alert(errorMessage);
       });
+    }
+    function setCookie(cookieName, cookieValue, daysToExpire) {
+      var d = new Date();
+      d.setTime(d.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+      var expires = "expires=" + d.toUTCString();
+      document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
     }
 
   })

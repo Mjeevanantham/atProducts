@@ -1,83 +1,86 @@
 body {
-    background: linear-gradient(269deg, #03D3F4 15.07%, rgba(27, 210, 254, 0.15) 63.59%, rgba(27, 210, 254, 0.00) 88.14%), #099DF1;
-    margin: 0;
+  /* background: linear-gradient(269deg, #03D3F4 15.07%, rgba(27, 210, 254, 0.15) 63.59%, rgba(27, 210, 254, 0.00) 88.14%), #099DF1; */
+  margin: 0;
+  background-image: url("../img/doodlebackground.jpg");
 }
 
 #Container {
-    padding-top: 20px;
-    position: fixed;
-    width: 80%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 60%;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.38);
-    box-sizing: border-box;
-    text-align: center;
+  padding-top: 20px;
+  position: fixed;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60%;
+  border-radius: 20px;
+  background: linear-gradient(
+      269deg,
+      #03d4f476 15.07%,
+      rgba(27, 210, 254, 0.15) 63.59%,
+      rgba(27, 210, 254, 0) 88.14%
+    ),
+    #099cf1da;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 #register {
-    color: #fff;
-    font-family: 'Lucida Sans', Verdana;
-    font-size: 25px;
-    font-weight: 700;
+  color: #000000;
+  font-family: "Lucida Sans", Verdana;
+  font-size: 35px;
+  font-weight: 700;
 }
 
 #username,
 #email,
 #password {
-    border-radius: 6px;
-    border: none;
-    outline: none;
-    padding: 13px;
-    width: 80%;
-    box-sizing: border-box;
-    margin-top: 15px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  padding: 13px;
+  width: 80%;
+  box-sizing: border-box;
+  margin-top: 15px;
 }
 
 #username:hover,
 #email:hover,
 #password:hover {
-    box-shadow: 0px 4px 9px 0px #040303 ;
-
+  box-shadow: 0px 4px 9px 0px #040303;
 }
 
-
 #signUp {
-    border-radius: 10px;
-    background: #000;
-    box-shadow: 0px 4px 10px 0px #FFF inset;
-    border: none;
-    color: white;
-    height: 40px;
-    width: 40%;
-    font-family: 'Lucida Sans', Verdana;
-    font-size: 20px;
-    margin-top: 10px;
-    cursor: pointer;
-
+  border-radius: 10px;
+  background: #000;
+  box-shadow: 0px 4px 10px 0px #fff inset;
+  border: none;
+  color: white;
+  height: 40px;
+  width: 40%;
+  font-family: "Lucida Sans", Verdana;
+  font-size: 20px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 #signUp:hover {
-    color: white;
-    background: rgba(5, 146, 239, 1);
-    box-shadow: 0px 4px 9px 0px #070606 inset;
-
+  color: white;
+  background: rgba(5, 146, 239, 1);
+  box-shadow: 0px 4px 9px 0px #070606 inset;
 }
 
 .registerpage a {
-    color: #000;
-    font-family: 'Nunito';
-    font-size: 15px;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 10px;
-    display: block;
+  color: #000;
+  font-family: "Nunito";
+  font-size: 15px;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 10px;
+  display: block;
 }
 
 @media only screen and (min-width: 768px) {
-    #Container {
-        width: 40%;
-    }
+  #Container {
+    width: 40%;
+  }
 }
